@@ -3,7 +3,6 @@ const Facebook = require("facebook-js-sdk");
 const https = require("https");
 const forge = require("node-forge");
 
-
 // step 1: initialize Facebook class with config
 
 (function main() {
@@ -21,8 +20,8 @@ const forge = require("node-forge");
 function makeExpressApp() {
   const app = express();
   const facebook = new Facebook({
-    appId: "848792613033343",
-    appSecret: "4a87bb67827f7b22b775d48d7e5efc83",
+    appId: "868163954385050",
+    appSecret: "a5a08c25f703ada95cf652ed2737fc4c",
     redirectUrl: "https://localhost:5000/callback",
     graphVersion: "v8.0",
   });
@@ -53,11 +52,11 @@ function makeExpressApp() {
     // fetch access_token from database and set it using facebook.setAccessToken() for all future requests
 
     facebook.setAccessToken(
-      "EAAMDZBO4wFX8BALsqXU5E5qIhyd6ZAjo8kkSJDVEact07SZAMOjBhElwTY0U9EQIlDTusBC8xcJt01VPiY8zVPHJ6ZBJWaUtAvTIw3gpX0YlltikhmcZBpcrQVRWfwsISkkhG2yqcb4QS5W6A1Sgs4xSmyjVElLjfRhNAQeuDuD3DSncZBtZCxkPoD1Mki74SgvpYy3LKPhn9z5dK85OjpR1bIRSerSWYqQFEREu49LjQZDZD"
+      "EAAMVlywboJoBANX13j3spHnpFkPXB5TwePK2ZCcTeruIpIVLRuTl0mzupaw5TvWO47XZCulFki1TsZBnPsF7HXT8BZCWos6TKkcdkSlrqNZBBLTVuJ1XIvhBumaK8hmZACxkeTlKRAhwJjrMev70Gldfm6zDjZBZAbBZC5vWTq24dPGZCCSmvrgG0ZBqZCQZB9vNnZBaOQaCRtsUiXkYSUzebl5TLIlXf5sfQrztGdHzJrTw4N4QZDZD"
     );
 
     facebook
-      .get("/me?fields=id,first_name,last_name,user_friends")
+      .get("/me?fields=id,name,email")
       .then((response) => {
         console.log(response.data);
         var name = response.data.name;
